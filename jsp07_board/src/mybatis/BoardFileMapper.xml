@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardFileMapper">
+	<insert id="insert">
+		INSERT INTO BOARDFILE(FNUM,BNUM,FILENAME)
+		VALUES(F_SEQ.NEXTVAL,#{bnum},#{fileName})
+	</insert>
+	<update id="update">
+		UPDATE BOARDFILE
+		SET BNUM= FILENAME=#{fileName}
+		WHERE FNUM=#{fnum}
+	</update>
+	<delete id="delete">
+		DELETE BOARDFILE
+		WHERE FNUM=#{fnum}		
+	</delete>
+	<delete id="delete_bnum">
+		DELETE BOARDFILE
+		WHERE BNUM=#{bnum}
+	</delete>
+	<select id="selectOne" resultType="dto.BoardFile">
+		SELECT*FROM BOARDFILE
+		WHERE BNUM=#{fnum}
+	</select>
+	<select id="selectList" resultType="dto.BoardFile">
+		SELECT*FROM BOARDFILE
+		WHERE BNUM=#{bnum}
+	</select>
+</mapper>
